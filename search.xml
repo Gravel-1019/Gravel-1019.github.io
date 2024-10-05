@@ -31,6 +31,55 @@
 </ul>
 <h5 id="const定义常量"><a href="#const定义常量" class="headerlink" title="const定义常量"></a>const定义常量</h5><p>const和let完全相同，仅在于用const声明的变量，必须在声明时赋值，不可以重新赋值</p>
 <p>开发中，应该尽量使用const来声明变量，以保证变量的值不会随意篡改</p>
+<h3 id="字符串和正则表达式"><a href="#字符串和正则表达式" class="headerlink" title="字符串和正则表达式"></a>字符串和正则表达式</h3><h5 id="码点和码元"><a href="#码点和码元" class="headerlink" title="码点和码元"></a>码点和码元</h5><p>早期由于存储空间宝贵，Unicode使用16位二进制来储存文字。我们将一个16位的二进制编码叫做一个码元（Code Unit）</p>
+<p>由于技术的发展，Unicode对文字编码进行扩展，将某些文字扩展到32位（占用两个码元），并且将某个文字对应的二进制数字叫做码点（Code Point）</p>
+<p>在JavaScript中获取字符串长度或者使用正则匹配字符都是按照码元来匹配的</p>
+<p>es6为了解决困扰，给字符串提供了方法：codePointAt()，给正则表达式添加flag:u，添加该配置使用码点匹配</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取码点方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">is32bit</span>(<span class="params">char,i</span>)&#123;</span><br><span class="line">    <span class="comment">//如果码点大于16为二进制最大值则其是32位</span></span><br><span class="line">    <span class="keyword">return</span> char.<span class="title function_">codePointAt</span>(i) &gt; <span class="number">0xffff</span>;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getLenghtOfCodePoint</span>(<span class="params">str</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; str.<span class="property">length</span>;i++)&#123;</span><br><span class="line">        <span class="comment">//i在索引码元</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">is32bit</span>(str,i))&#123;</span><br><span class="line">            <span class="comment">//当前字符串占用两个码元</span></span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">        len++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="更多的字符串api"><a href="#更多的字符串api" class="headerlink" title="更多的字符串api"></a>更多的字符串api</h5><ul>
+<li><p>includes：判断字符串中是否包含指定的子字符串</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">text.<span class="title function_">includes</span>(<span class="string">&quot;字符串&quot;</span>,开始查找下标);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>startWith：判断字符串是否以指定的字符串开始</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">text.<span class="title function_">startWith</span>(<span class="string">&quot;字符串&quot;</span>,开始查找下标);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>endWith：判断字符串是否以指定的字符串结尾</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">text.<span class="title function_">endtWith</span>(<span class="string">&quot;字符串&quot;</span>,开始查找下标);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>repeat()：将字符串重复指定的次数返回新字符串</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">text.repeat(次数);</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="正则中的粘连标记"><a href="#正则中的粘连标记" class="headerlink" title="正则中的粘连标记"></a>正则中的粘连标记</h5><p> 标记名：y</p>
+<p> 含义：匹配时完全按照正则对象中lastIndex位置开始匹配，并且匹配的位置必须在lastIndex位置。</p>
+<h5 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h5><p>es6中提供了模板字符串的书写，可以非常方便的进行拼接和换行，模板字符串符号为&#96;&#96;</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">`我是一个模板字符串`</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="string">`我是一个<span class="subst">$&#123;JS表达式&#125;</span>能拼接表达式的字符串`</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h5 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">a,b=<span class="number">1</span>,c=<span class="number">2</span></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b + c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">func</span>(<span class="number">5</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>调用函数，如果不给b，c传对应的参数（或传ubdefined），则b，c为默认值</p>
+<h5 id="剩余参数"><a href="#剩余参数" class="headerlink" title="剩余参数"></a>剩余参数</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">func</span>(<span class="params">...args</span>)&#123;</span><br><span class="line">    <span class="comment">//args收集所有参数，形成的一个数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>使用细节：</p>
+<ul>
+<li>一个函数只能出现一个剩余函数</li>
+<li>剩余参数必须是最后一个参数</li>
+</ul>
+<h5 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h5><ul>
+<li><p>展开数组</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(...arr,<span class="number">6</span>) <span class="comment">// 可以添加新的元素</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>深复制数组</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [...arr]</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>展开对象（ES7）</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;gravel&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">17</span>,</span><br><span class="line">    <span class="attr">love</span>:<span class="string">&quot;Hacking&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">    ...obj1,</span><br><span class="line">    <span class="attr">love</span>: <span class="string">&quot;Programming&quot;</span><span class="comment">//可以更改属性或添加新的属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h5><p>箭头函数是一个函数表达式，理论上任何使用函数表达式的场景都可以使用箭头函数</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">(参数<span class="number">1</span>,参数<span class="number">2</span>，...) =&gt; &#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <categories>
         <category>编程</category>
