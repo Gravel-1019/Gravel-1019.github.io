@@ -13,20 +13,20 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/10/04/es6/"/>
+    <link rel="canonical" href="http://example.com/2024/10/04/es6笔记/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="块级绑定用var定义变量的问题 允许重复的变量声明：导致数据被覆盖 1234var a &#x3D; 1;&#x2F;&#x2F;很多代码var a &#x3D; 2;&#x2F;&#x2F;a变量被覆盖，难以排查错误  变量提升：怪异的数据访问、闭包问题 12345678if (Math.random()&lt;0.5)&#123;    var a &#x3D; &quot;abc&quot;;    console.log(a)&#125;else&#123;">
+        <meta name="description" content="Promise部分见其他文章 块级绑定用var定义变量的问题 允许重复的变量声明：导致数据被覆盖 1234var a &#x3D; 1;&#x2F;&#x2F;很多代码var a &#x3D; 2;&#x2F;&#x2F;a变量被覆盖，难以排查错误  变量提升：怪异的数据访问、闭包问题 12345678if (Math.random()&lt;0.5)&#123;    var a &#x3D; &quot;abc&quot;;    console.log(a)&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6笔记">
-<meta property="og:url" content="http://example.com/2024/10/04/ES6/index.html">
+<meta property="og:title" content="ES6 初探：现代 JavaScript 的新特性">
+<meta property="og:url" content="http://example.com/2024/10/04/ES6%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="块级绑定用var定义变量的问题 允许重复的变量声明：导致数据被覆盖 1234var a &#x3D; 1;&#x2F;&#x2F;很多代码var a &#x3D; 2;&#x2F;&#x2F;a变量被覆盖，难以排查错误  变量提升：怪异的数据访问、闭包问题 12345678if (Math.random()&lt;0.5)&#123;    var a &#x3D; &quot;abc&quot;;    console.log(a)&#125;else&#123;">
+<meta property="og:description" content="Promise部分见其他文章 块级绑定用var定义变量的问题 允许重复的变量声明：导致数据被覆盖 1234var a &#x3D; 1;&#x2F;&#x2F;很多代码var a &#x3D; 2;&#x2F;&#x2F;a变量被覆盖，难以排查错误  变量提升：怪异的数据访问、闭包问题 12345678if (Math.random()&lt;0.5)&#123;    var a &#x3D; &quot;abc&quot;;    console.log(a)&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-04T07:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-04T15:44:37.782Z">
+<meta property="article:modified_time" content="2024-10-06T16:11:40.941Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="编程笔记">
 <meta property="article:tag" content="JavaScript">
@@ -42,7 +42,7 @@
     
     <title>
         
-            ES6笔记 -
+            ES6 初探：现代 JavaScript 的新特性 -
         
         gravel&#39;s blog
     </title>
@@ -580,7 +580,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">ES6笔记</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">ES6 初探：现代 JavaScript 的新特性</h1>
                 </div>
             
             </div>
@@ -606,8 +606,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-04 23:44:37</span>
-            <span class="mobile">2024-10-04 23:44:37</span>
+            <span class="desktop">2024-10-07 00:11:40</span>
+            <span class="mobile">2024-10-07 00:11:40</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -671,7 +671,8 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="块级绑定"><a href="#块级绑定" class="headerlink" title="块级绑定"></a>块级绑定</h3><h5 id="用var定义变量的问题"><a href="#用var定义变量的问题" class="headerlink" title="用var定义变量的问题"></a>用var定义变量的问题</h5><ul>
+            <p><em>Promise部分见其他文章</em></p>
+<h3 id="块级绑定"><a href="#块级绑定" class="headerlink" title="块级绑定"></a>块级绑定</h3><h5 id="用var定义变量的问题"><a href="#用var定义变量的问题" class="headerlink" title="用var定义变量的问题"></a>用var定义变量的问题</h5><ul>
 <li><p>允许重复的变量声明：导致数据被覆盖</p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//很多代码</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"><span class="comment">//a变量被覆盖，难以排查错误</span></span><br></pre></td></tr></table></figure></div>
 </li>
@@ -746,8 +747,234 @@
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;gravel&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">17</span>,</span><br><span class="line">    <span class="attr">love</span>:<span class="string">&quot;Hacking&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">    ...obj1,</span><br><span class="line">    <span class="attr">love</span>: <span class="string">&quot;Programming&quot;</span><span class="comment">//可以更改属性或添加新的属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <h5 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h5><p>箭头函数是一个函数表达式，理论上任何使用函数表达式的场景都可以使用箭头函数</p>
+<p>箭头函数中的this指向取决于箭头函数定义位置的this指向，而与如何调用无关 </p>
+<p>箭头函数没有原型</p>
+<p>箭头函数不能作为构造函数使用</p>
+<ul>
+<li><p>语法	</p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(参数<span class="number">1</span>,参数<span class="number">2</span>，...) =&gt; &#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>只有一个参数，可以省略参数的括号 </p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">参数=&gt;&#123;</span><br><span class="line">   <span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>只有一条返回语句可以省略大括号和return关键字</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参数 =&gt; 返回值</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><h5 id="新增对象字面量语法"><a href="#新增对象字面量语法" class="headerlink" title="新增对象字面量语法"></a>新增对象字面量语法</h5><ul>
+<li><p>如果对象字面量初始化时，成员的名称来自于一个变量，并且和变量的名称相同，则可以进行简写</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createUser</span>(<span class="params">loginId,loginPwd,nickName</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        loginId, </span><br><span class="line">        loginPwd,</span><br><span class="line">        nickName,</span><br><span class="line">        <span class="attr">id</span>: <span class="title class_">Math</span>.<span class="title function_">random</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 简化下面的写法</span></span><br><span class="line">    <span class="comment">// return&#123;</span></span><br><span class="line">    <span class="comment">//     loginId:loginId,</span></span><br><span class="line">    <span class="comment">//     loginPwd:loginPwd,</span></span><br><span class="line">    <span class="comment">//     nickName:nickName,</span></span><br><span class="line">    <span class="comment">//     id: Math.random()</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>方法速写</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;gravel&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="title function_">sayHello</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">    <span class="comment">// sayHello:function()&#123;&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>计算属性名，[表达式]:”value”，属性名为表达式的值</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> prop = <span class="string">&#x27;name&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    [prop]:<span class="string">&quot;gravel&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="Object的新增api"><a href="#Object的新增api" class="headerlink" title="Object的新增api"></a>Object的新增api</h5><ul>
+<li><p>Object.is：判断两个对象是否相等，与&#x3D;&#x3D;&#x3D;基本相等，除了一下情况：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>,<span class="title class_">NaN</span>))<span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">is</span>(+<span class="number">0</span>,-<span class="number">0</span>))<span class="comment">//false</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>Object.assign：用于混合对象</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user1=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;gravel&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">16</span>,</span><br><span class="line">    <span class="attr">love</span>:<span class="string">&quot;Hacking&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user2=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;QWQ&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">17</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj = <span class="title class_">Object</span>.<span class="title function_">assign</span>(user1,user2);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj); <span class="comment">//&#123; name: &#x27;QWQ&#x27;, age: 17, love: &#x27;Hacking&#x27; &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj===user1); <span class="comment">//true</span></span><br></pre></td></tr></table></figure></div>
 
+<p>Object.assign会修改第一个参数（obj&#x3D;&#x3D;&#x3D;user1），建议使用展开运算符或者第一个参数传空对象</p>
+</li>
+</ul>
+<h5 id="定义类的语法糖"><a href="#定义类的语法糖" class="headerlink" title="定义类的语法糖"></a>定义类的语法糖</h5><p>es6之前js通过原型来实现面向对象的开发，十分繁琐，es6引入了新的定义类的方法</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> 类名&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">参数<span class="number">1</span>,参数<span class="number">2</span>,...</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.参数<span class="number">1</span> = 参数<span class="number">1</span>;</span><br><span class="line">        <span class="variable language_">this</span>.参数<span class="number">2</span> = 参数<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    方法()&#123;</span><br><span class="line">        <span class="comment">//代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="类的其他新特性"><a href="#类的其他新特性" class="headerlink" title="类的其他新特性"></a>类的其他新特性</h5><ul>
+<li><p>可计算的属性表达式，属性的名字可以通过表达式计算得来</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> prop = <span class="string">&quot;printName&quot;</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>&#123;</span><br><span class="line">    [prop]()&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">User</span>().<span class="title function_">printName</span>()<span class="comment">//namew</span></span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>静态成员：类中定义定义属性时加上static关键字，静态成员通过类来调用而不是对象</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">test</span>&#123;</span><br><span class="line">    <span class="keyword">static</span> a = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(test.<span class="property">a</span>)</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>匿名类：在JS中，类的本质还是函数</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> A = <span class="keyword">class</span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> a = <span class="keyword">new</span> <span class="title function_">A</span>();</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h5><p>如果两个类，如果可以描述为“B是A”，则A和B形成继承关系。如果A是B的父类，B自动拥有A中的所有实例成员</p>
+<ul>
+<li>继承中涉及的关键字：<ul>
+<li>extends：继承，用于类的定义</li>
+<li>super：直接当作函数调用，表示父类的构造函数 ;当作对象调用，表示父类的原型</li>
+</ul>
+</li>
+</ul>
+<p>es6要求，如果子类定义constructor，必须在constructor的第一行手动调用父类的构造函数</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">type,name,age,sex</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">sex</span> = sex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">eat</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;eat&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Animal</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name,age,sex</span>)&#123;</span><br><span class="line">        <span class="variable language_">super</span>(<span class="string">&#x27;Dog&#x27;</span>,name,age,sex);<span class="comment">//super当作函数调用</span></span><br><span class="line">        <span class="variable language_">super</span>.<span class="title function_">eat</span>()<span class="comment">//当作对象调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h3><h5 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h5><p>解构：es6的一种语法规则，将一个对象或数组的某个属性提取到某个变量中</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;gravel&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">17</span>,</span><br><span class="line">    <span class="attr">sex</span>:<span class="string">&quot;男&quot;</span>,</span><br><span class="line">    <span class="attr">address</span>:&#123;</span><br><span class="line">        <span class="attr">province</span>:<span class="string">&quot;浙江&quot;</span>,</span><br><span class="line">        <span class="attr">city</span>:<span class="string">&quot;杭州&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> name,age,sex,address;</span><br><span class="line">(&#123;name,age,sex,address&#125; = user);<span class="comment">//括号为了防止编辑器标红</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>解构中使用默认值</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;同名变量=默认值&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>非同名属性解构</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;属性名:变量名&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h5 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用解构赋值的方式从数组中获取成员</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="string">&#x27;Jack&#x27;</span>, <span class="string">&#x27;Rose&#x27;</span>, <span class="string">&#x27;Tom&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前面的 [] 表示要从 arr 这个数组中获取成员了</span></span><br><span class="line"><span class="comment">// a b c 分别对应这数组中的索引 0 1 2</span></span><br><span class="line"><span class="comment">// arr 必须是一个数组</span></span><br><span class="line"><span class="keyword">let</span> [a, b, c] = arr</span><br><span class="line"></span><br><span class="line"><span class="comment">//解构多维数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>,[<span class="number">5</span>]]]</span><br><span class="line"><span class="keyword">let</span> [a,b,[c,d,[e]]] = arr</span><br><span class="line"><span class="comment">//解构数组只需要将数组中的值替换成变量，就可以通过变量或取</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h3><h5 id="普通符号"><a href="#普通符号" class="headerlink" title="普通符号"></a>普通符号</h5><p>符号：es6新增的一个数据类型，它通过使用函数<code>Symbol(描述信息)</code>来创建</p>
+<p>符号设计的初衷是为了给对象设置私有属性</p>
+<p>符号具有以下特点：</p>
+<ul>
+<li>没有字面量</li>
+<li>使用typeof得到的类型是symbol</li>
+<li>每次创建的符号永远不相等</li>
+<li>符号可以作为属性名，这种属性称之为符号属性</li>
+<li>符号属性无法枚举</li>
+</ul>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = (<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> symPassword = <span class="title class_">Symbol</span>(<span class="string">&#x27;password&#x27;</span>);  <span class="comment">// 私有符号</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">setPassword</span>: <span class="keyword">function</span>(<span class="params">pwd</span>) &#123;</span><br><span class="line">            <span class="variable language_">this</span>[symPassword] = pwd;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">getPassword</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>[symPassword];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">user.<span class="title function_">setPassword</span>(<span class="string">&#x27;secret123&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="title function_">getPassword</span>()); <span class="comment">// secret123</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(user));  <span class="comment">// []  无法直接枚举到 password</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="共享符号"><a href="#共享符号" class="headerlink" title="共享符号"></a>共享符号</h5><p>根据某个符号描述能够得到同一个符号</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;符号描述&quot;</span>) <span class="comment">//获取共享符号</span></span><br><span class="line"><span class="keyword">const</span> syb1 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;符号&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> syb2 = <span class="title class_">Symbol</span>.<span class="title function_">for</span>(<span class="string">&quot;符号&quot;</span>)<span class="comment">//syb1和syb2是同一个符号</span></span><br></pre></td></tr></table></figure></div>
+
+<h5 id="知名符号"><a href="#知名符号" class="headerlink" title="知名符号"></a>知名符号</h5><p>知名符号是一些具有特殊含义的共享符号，通过Symbol的静态属性得到</p>
+<p>这里讲一个知名符号：Symbol.hasInstance</p>
+<p>该符号用于定义构造函数的静态成员，它将影响instanceof的判定</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj <span class="keyword">instanceof</span> A</span><br><span class="line"><span class="comment">//等效于</span></span><br><span class="line">A[<span class="title class_">Symbol</span>.<span class="property">hasInstance</span>](obj)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h3><h5 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h5><p>JS规定，如果一个对象有next方法，并且该方法返回一个对象，格式为<code>&#123;value:值 ，done:是否迭代完成&#125;</code></p>
+<ul>
+<li>next方法：用于得到下一个数据</li>
+<li>返回的对象<ul>
+<li>value：下一个数据的值</li>
+<li>done：布尔值，是否迭代完成</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="comment">//迭代数组arr</span></span><br><span class="line"><span class="keyword">const</span> iterator = &#123;</span><br><span class="line">    <span class="attr">i</span>:<span class="number">0</span>,<span class="comment">//当前数组下标</span></span><br><span class="line">    <span class="title function_">next</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="attr">value</span>:arr[<span class="variable language_">this</span>.<span class="property">i</span>++],</span><br><span class="line">            <span class="attr">done</span>:<span class="variable language_">this</span>.<span class="property">i</span> &gt;= arr.<span class="property">length</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h5><p>es6规定。如果一个对象具有知名符号属性<code>Symbol.iterator</code> ，并且属性值是一个迭代器创建函数，则该对象是可迭代的，比如数组就是一个可迭代对象</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="comment">//可迭代对象</span></span><br><span class="line">    [<span class="title class_">Symbol</span>.<span class="property">iterator</span>]()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            <span class="title function_">next</span>(<span class="params"></span>)&#123;</span><br><span class="line">                <span class="keyword">return</span>&#123;</span><br><span class="line">                    <span class="attr">value</span>:<span class="number">1</span>,</span><br><span class="line">                    <span class="attr">done</span>:<span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>迭代数组：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>];</span><br><span class="line"><span class="keyword">const</span> iterator = arr[<span class="title class_">Symbol</span>.<span class="property">iterator</span>]();</span><br><span class="line">iterator.<span class="title function_">next</span>()</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="for-of循环"><a href="#for-of循环" class="headerlink" title="for-of循环"></a>for-of循环</h5><p>for-of循环用于遍历可迭代对象，格式如下:</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> iterable) &#123;</span><br><span class="line">    <span class="comment">//iterable：可迭代对象</span></span><br><span class="line">    <span class="comment">//item：每次迭代得到的数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h5><p>生成器是一个通过构造函数Generator创建的对象，生成器既是一个迭代器，同时又是一个可迭代对象</p>
+<p>生成器的创建，必须使用生成器函数</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个生成器函数，该函数一定返回一个生成器</span></span><br><span class="line"><span class="keyword">function</span> *<span class="title function_">method</span>(<span class="params"></span>)&#123;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>生成器函数内部是为了给生成器的每次迭代提供数据</p>
+<p>每次调用生成器的next方法将导致生成器函数运行到下一个yield关键字位置</p>
+<p>yield是一个关键字，只能在生成器内部使用，表达产生一个迭代数据</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这是一个生成器函数，该函数一定返回一个生成器</span></span><br><span class="line"><span class="keyword">function</span> *<span class="title function_">test</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1&quot;</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2&quot;</span>)</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;a3aa&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> generator = <span class="title function_">test</span>();</span><br></pre></td></tr></table></figure></div>
+
+<p><em><strong>一些感慨：怀念当时学python时学生成器的感觉，当时听得半懂不懂的，现在有融会贯通的感觉了QWQ</strong></em></p>
+<h3 id="更多集合类型"><a href="#更多集合类型" class="headerlink" title="更多集合类型"></a>更多集合类型</h3><h5 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h5><p>set用于存放不重复的数据</p>
+<p>创建set集合：<code>new Set();</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Set</span>(可迭代对象);</span><br><span class="line"><span class="comment">//创建一个具有初始内容的set集合，内容来自可迭代对象每次迭代的结果，比如new Set([1,2,3,4,5]);</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>添加数据</p>
+<ul>
+<li><code>add(数据)</code>，添加数据到集合末尾，如果数据已存在，则不进行操作（通过Object.is 判断，但是+0和-0相等）</li>
+</ul>
+</li>
+<li><p>判断是否存在对应数据</p>
+<ul>
+<li><code>has(数据)</code>：判断set中是否存在数据的</li>
+</ul>
+</li>
+<li><p>删除数据</p>
+<ul>
+<li><code>delete(数据)</code>：删除匹配的数据，返回是否删除成功</li>
+</ul>
+</li>
+<li><p>清空集合</p>
+<ul>
+<li><code>clear()</code></li>
+</ul>
+</li>
+<li><p>获取元素数量</p>
+<ul>
+<li><code>set对象.size</code></li>
+</ul>
+</li>
+<li><p>与数组相互转化</p>
+<ul>
+<li><pre><code class="javascript">const s = new Set([1,2,3,4,5]);//arr =&gt; set
+const arr = [...s]//set =&gt; arr
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 遍历set</span><br><span class="line"></span><br><span class="line">  - for-of</span><br><span class="line"></span><br><span class="line">    ```javascript</span><br><span class="line">    const s = new Set([1,2,3,4,5]);</span><br><span class="line">    for (const item of s) &#123;</span><br><span class="line">        console.log(item);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+</code></pre>
+</li>
+<li><p>forEach（set集合没有下表，所以forEach第二个参数和第一个一样）</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);</span><br><span class="line">s.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+</li>
+</ul>
+<h5 id="map集合"><a href="#map集合" class="headerlink" title="map集合"></a>map集合</h5><p>map集合用于存储多个键值对数据 </p>
+<ul>
+<li><p>创建空map</p>
+<ul>
+<li><pre><code class="javascript">new Map();
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 创建一个具有初始内容的map，初始内容来自可迭代对象每一次迭代的结果，要求每一次迭代的结果必须是一个长度为2的数组，数组的第一项表示键，第二项表示值</span><br><span class="line"></span><br><span class="line">  - ```javascript</span><br><span class="line">    new Map(可迭代对象);</span><br><span class="line">    const mp = new Map([[&quot;a&quot;,1],[&quot;b&quot;,2],[&quot;C&quot;,3]]);</span><br></pre></td></tr></table></figure></div>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>获取map中键的数量</p>
+<ul>
+<li><code>Map对象.size</code></li>
+</ul>
+</li>
+<li><p>设置一个键值对，键值可以是任何类型，键不存在添加一项，键存在覆盖之前的值</p>
+<ul>
+<li><code>Map对象.set(键,值)</code></li>
+</ul>
+</li>
+<li><p>根据键获得值</p>
+<ul>
+<li><code>Map对象.get(键)</code></li>
+</ul>
+</li>
+<li><p>判断某个键是否存在</p>
+<ul>
+<li><code>has(键)</code></li>
+</ul>
+</li>
+<li><p>删除指定的键&#96;</p>
+<ul>
+<li><code>delete(键)</code></li>
+</ul>
+</li>
+<li><p>遍历</p>
+<ul>
+<li><p>for-of循环</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mp = <span class="keyword">new</span> <span class="title class_">Map</span>([[<span class="string">&quot;a&quot;</span>,<span class="number">1</span>],[<span class="string">&quot;b&quot;</span>,<span class="number">2</span>],[<span class="string">&quot;C&quot;</span>,<span class="number">3</span>]]);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> item <span class="keyword">of</span> mp) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+</li>
+</ul>
+<h3 id="代理与反射"><a href="#代理与反射" class="headerlink" title="代理与反射"></a>代理与反射</h3><h5 id="Reflect反射"><a href="#Reflect反射" class="headerlink" title="Reflect反射"></a>Reflect反射</h5><p>Reflect是一个内置的JS对象，提供方法让开发者通过调用这些方法访问一些JS底层功能</p>
+<p>比如这段代码：<code>obj.a = 10</code>中的&#x3D;属于底层操作，用Reflect的api能够对底层的操作进行封装 （很抽象）</p>
+<p>JavaScript正在努力让开发者脱离底层的写法</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">b</span>:<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Reflect</span>.<span class="title function_">set</span>(obj,<span class="string">&quot;a&quot;</span>,<span class="number">10</span>);<span class="comment">//相当于obj.a = 10</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>Reflect.set(target, propertyKey, value): 设置对象target的属性propertyKey的值为value，等同于给对象的属性赋值</li>
+<li>Reflect.get(target, propertyKey): 读取对象target的属性propertyKey，等同于读取对象的属性值</li>
+<li>Reflect.apply(target, thisArgument, argumentsList)：调用一个指定的函数，并绑定this和参数列表。等同于函数调用</li>
+<li>Reflect.deleteProperty(target, propertyKey)：删除一个对象的属性</li>
+<li>Reflect.defineProperty(target, propertyKey, attributes)：类似于Object.defineProperty，不同的是如果配置出现问题，返回false而不是报错</li>
+<li>Reflect.construct(target, argumentsList)：用构造函数的方式创建一个对象</li>
+<li>Reflect.has(target, propertyKey): 判断一个对象是否拥有一个属性</li>
+<li>其他API：<a class="link"   href="https://gitee.com/link?target=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect" >https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects&#x2F;Reflect <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h5 id="Proxy代理"><a href="#Proxy代理" class="headerlink" title="Proxy代理"></a>Proxy代理</h5><p>代理提供了修改底层实现的方式，可以重写反射的所有方法</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Proxy</span>(target, handler)</span><br><span class="line"><span class="comment">//代理一个目标对象</span></span><br><span class="line"><span class="comment">//target：目标对象</span></span><br><span class="line"><span class="comment">//handler：是一个普通对象，其中可以重写底层实现</span></span><br><span class="line"><span class="comment">//返回一个代理对象</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//重写set的例子</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">a</span>:<span class="number">1</span>,</span><br><span class="line">    <span class="attr">b</span>:<span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj,&#123;</span><br><span class="line">    <span class="title function_">set</span>(<span class="params">target,propertyKey,value</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(target,propertyKey,value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<hr>
+
+<p>end：2024.10.07</p>
 
         </div>
 
@@ -755,18 +982,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> ES6笔记</li>
+        <li><strong>Title:</strong> ES6 初探：现代 JavaScript 的新特性</li>
         <li><strong>Author:</strong> gravel</li>
         <li><strong>Created at
                 :</strong> 2024-10-04 15:00:00</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-10-04 23:44:37
+                    :</strong> 2024-10-07 00:11:40
             </li>
         
         <li>
-            <strong>Link:</strong> https://gravel-1019.github.io/2024/10/04/ES6/
+            <strong>Link:</strong> https://gravel-1019.github.io/2024/10/04/ES6笔记/
         </li>
         <li>
             <strong>
@@ -811,8 +1038,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">ES6笔记</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%97%E7%BA%A7%E7%BB%91%E5%AE%9A"><span class="nav-text">块级绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">字符串和正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-text">函数</span></a></li></ol>
+        <div class="page-title">ES6 初探：现代 JavaScript 的新特性</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%97%E7%BA%A7%E7%BB%91%E5%AE%9A"><span class="nav-text">块级绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-text">字符串和正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1"><span class="nav-text">对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84"><span class="nav-text">解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7"><span class="nav-text">符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-text">迭代器和生成器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-text">更多集合类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="nav-text">代理与反射</span></a></li></ol>
 
     </div>
 </div>
