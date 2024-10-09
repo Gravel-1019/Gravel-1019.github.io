@@ -319,7 +319,7 @@ const arr = [...s]//set =&gt; arr
   </entry>
   <entry>
     <title>ctfshow刷题笔记-web入门-信息收集web1-20</title>
-    <url>/2024/10/09/ctfshow%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-web%E7%AF%87/</url>
+    <url>/2024/10/09/ctfshow%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-web%E5%85%A5%E9%97%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86web1-20/</url>
     <content><![CDATA[<h5 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h5><p>题目描述：<em>开发注释未及时删除</em></p>
 <p>右键，查看源代码，在注释部分得到flag</p>
 <h5 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h5><p>题目描述：<em>js前台拦截 &#x3D;&#x3D;&#x3D; 无效操作</em></p>
@@ -392,7 +392,7 @@ const arr = [...s]//set =&gt; arr
 <h5 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h5><p>题目描述：<em>小0day:某编辑器最新版默认配置下，如果目录不存在，则会遍历服务器根目录。有时候源码里面就能不经意间泄露重要(editor)的信息,默认配置害死人</em></p>
 <p>根据题目描述，直接访问&#x2F;editor，发现一个富文本编辑框，点击图片，图片空间，跟着这个路径找到var&#x2F;www&#x2F;html&#x2F;nothinghere&#x2F;fl000g.txt。在浏览器中访问&#x2F;nothinghere&#x2F;fl000g.txt获得flag</p>
 <h5 id="web15"><a href="#web15" class="headerlink" title="web15"></a>web15</h5><p>题目描述：<em>公开的信息比如邮箱，可能造成信息泄露，产生严重后果</em></p>
-<p>在页面最下方发现一个邮箱：<a class="link"   href="mailto:&#49;&#49;&#53;&#x36;&#54;&#51;&#49;&#57;&#54;&#49;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;" >&#49;&#49;&#53;&#x36;&#54;&#51;&#49;&#57;&#54;&#49;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>在页面最下方发现一个邮箱：<a class="link"   href="mailto:&#49;&#49;&#x35;&#x36;&#x36;&#51;&#x31;&#57;&#x36;&#x31;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;" >&#49;&#49;&#x35;&#x36;&#x36;&#51;&#x31;&#57;&#x36;&#x31;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>目前没发现邮箱的作用，所以打开dirsearch扫描，结果：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[05:02:23] 200 -    1KB - /admin/ </span><br></pre></td></tr></table></figure></div>
 
