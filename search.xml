@@ -317,4 +317,135 @@ const arr = [...s]//set =&gt; arr
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>ctfshow刷题笔记-web入门-信息收集web1-20</title>
+    <url>/2024/10/09/ctfshow%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-web%E7%AF%87/</url>
+    <content><![CDATA[<h5 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h5><p>题目描述：<em>开发注释未及时删除</em></p>
+<p>右键，查看源代码，在注释部分得到flag</p>
+<h5 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h5><p>题目描述：<em>js前台拦截 &#x3D;&#x3D;&#x3D; 无效操作</em></p>
+<p>打开环境，发现右键和F12都无法查看源代码</p>
+<p>直接通过快捷键：CTRL+shift+i打开开发者工具，查看源代码，在注释部分得到flag</p>
+<h5 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h5><p>题目描述：<em>没思路的时候抓个包看看，可能会有意外收获</em></p>
+<p>配置代理（可以在设置中配置本机代理，或者使用浏览器代理插件），打开burpsuite抓包</p>
+<p>找到数据包，右键选择<code>Send to Repeater</code>，切换到Repeater页面点击发送，在响应包中获取flag</p>
+<h5 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h5><p>题目描述：<em>总有人把后台地址写入robots，帮黑阔大佬们引路。</em></p>
+<p>根据题目描述很明显知道这题考察的是robots.txt的信息泄露</p>
+<p>在路径后拼接<code>/robots.txt</code>，得到以下内容：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow: /flagishere.txt</span><br></pre></td></tr></table></figure></div>
+
+<p>访问&#x2F;flagishere.txt，得到flag</p>
+<h5 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h5><p>题目描述：<em>phps源码泄露有时候能帮上忙</em></p>
+<p>题目提示：<em>考点phps文件泄露，直接访问index.phps。获得flag</em></p>
+<p>访问index.phps，下载源代码，获取flag</p>
+<h5 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h5><p>题目描述：<em>解压源码到当前目录，测试正常，收工</em></p>
+<p>打开环境啥都没有，根据提示估计是要扫描</p>
+<p>这里我们用到一款目录扫描器：dirsearch</p>
+<p>打开kali，下载dirsearch，并且运行</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install dirsearch #下载</span><br><span class="line">dirsearch -u url #扫描</span><br></pre></td></tr></table></figure></div>
+
+<p>获得扫描结果：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[02:40:17] 200 -  486B  - /www.zip</span><br></pre></td></tr></table></figure></div>
+
+<p>下载<a href="http://www.zip，根据提示，打开文件中的fl000g.txt，获取flag：">www.zip，根据提示，打开文件中的fl000g.txt，获取flag：</a></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">flag&#123;flag_here&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>一看就是假flag，所以在浏览器中访问fl000g.txt，获取flag</p>
+<h5 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h5><p>题目描述：<em>版本控制很重要，但不要部署到生产环境更重要。</em></p>
+<p>根据题目描述盲猜.git泄露</p>
+<p>dirsearch扫描结果：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[02:51:48] 200 -   46B  - /.git/</span><br></pre></td></tr></table></figure></div>
+
+<p>访问.git获得flag</p>
+<h5 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h5><p>题目描述：<em>版本控制很重要，但不要部署到生产环境更重要。</em></p>
+<p>题目描述和上一题一样，估计是svn泄露</p>
+<p>dirsearch扫描结果：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[03:01:16] 200 -   46B  - /.svn/ </span><br></pre></td></tr></table></figure></div>
+
+<p>访问.svn获取flag</p>
+<h5 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h5><p>题目描述：<em>发现网页有个错别字？赶紧在生产环境vim改下，不好，死机了</em></p>
+<p>看题目描述是关于vim缓存的知识点</p>
+<p>知识点1：<em><strong>vim在编辑文档的过程中如果异常退出，会产生缓存文件，同一个文件产生的多个交换文件的后缀是不一样的。例如文件名为xxx，第一次缓存为xxx.swp，第二次缓存为xxx.swo，第三次缓存为xxx.swn</strong></em></p>
+<p>直接访问&#x2F;index.php.swp获取flag</p>
+<p>这里可能你会问：”为什么文件一定叫index.php呀”，这里出现第二个知识点</p>
+<p>知识点2：<em><strong>在没有特殊指定主页的情况下，中间件一般将index.php或index.html解析为网站首页</strong></em></p>
+<h5 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h5><p>题目描述：<em>cookie 只是一块饼干，不能存放任何隐私数据</em></p>
+<p>F12 &#x3D;&gt; 应用程序 &#x3D;&gt; cookie 获得flag，发现flag经过url编码。解码得到flag</p>
+<h5 id="web11"><a href="#web11" class="headerlink" title="web11"></a>web11</h5><p>题目描述：<em>域名其实也可以隐藏信息，比如flag.ctfshow.com 就隐藏了一条信息</em></p>
+<p>使用命令查看dns解析</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">nslookup -qt=txt flag.ctfshow.com</span><br></pre></td></tr></table></figure></div>
+
+<p>但是貌似域名已经死了</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">*** Invalid option: qt=txt</span><br><span class="line">Server:         192.168.139.2</span><br><span class="line">Address:        192.168.139.2#53</span><br><span class="line"></span><br><span class="line">** server can&#x27;t find flag.ctfshow.com: NXDOMAIN</span><br></pre></td></tr></table></figure></div>
+
+<p>nslookup用法参照：<a class="link"   href="https://blog.csdn.net/glmichelin/article/details/113186020" >nslookup命令详解和实战例子（全）_请说明nslookup命令的作用，并举例说明-CSDN博客 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h5 id="web12"><a href="#web12" class="headerlink" title="web12"></a>web12</h5><p>题目描述：<em>有时候网站上的公开信息，就是管理员常用密码</em></p>
+<p>打开dirsearch扫描，结果：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[04:00:46] 401 -   42B  - /admin/                                           </span><br><span class="line">[04:00:46] 401 -   42B  - /admin/index.php </span><br><span class="line">[04:01:11] 200 -   32B  - /robots.txt </span><br></pre></td></tr></table></figure></div>
+
+<p>访问&#x2F;robots.txt：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow: /admin/</span><br></pre></td></tr></table></figure></div>
+
+<p>没啥用已经扫出来了，直接访问&#x2F;admin&#x2F;，要求输入用户名密码。在页面翻了一圈找到一个电话：372619038</p>
+<p>放到密码的地方试一试，用户名admin。登陆成功，获取flag</p>
+<h5 id="webg13"><a href="#webg13" class="headerlink" title="webg13"></a>webg13</h5><p>题目描述：<em>技术文档里面不要出现敏感信息，部署到生产环境后及时修改默认密码</em></p>
+<p>发现网页中存在一个document的链接，点击后发现后台登陆地址和默认密码 ，登陆拿到flag</p>
+<h5 id="web14"><a href="#web14" class="headerlink" title="web14"></a>web14</h5><p>题目描述：<em>小0day:某编辑器最新版默认配置下，如果目录不存在，则会遍历服务器根目录。有时候源码里面就能不经意间泄露重要(editor)的信息,默认配置害死人</em></p>
+<p>根据题目描述，直接访问&#x2F;editor，发现一个富文本编辑框，点击图片，图片空间，跟着这个路径找到var&#x2F;www&#x2F;html&#x2F;nothinghere&#x2F;fl000g.txt。在浏览器中访问&#x2F;nothinghere&#x2F;fl000g.txt获得flag</p>
+<h5 id="web15"><a href="#web15" class="headerlink" title="web15"></a>web15</h5><p>题目描述：<em>公开的信息比如邮箱，可能造成信息泄露，产生严重后果</em></p>
+<p>在页面最下方发现一个邮箱：<a class="link"   href="mailto:&#49;&#49;&#53;&#x36;&#54;&#51;&#49;&#57;&#54;&#49;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;" >&#49;&#49;&#53;&#x36;&#54;&#51;&#49;&#57;&#54;&#49;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>目前没发现邮箱的作用，所以打开dirsearch扫描，结果：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[05:02:23] 200 -    1KB - /admin/ </span><br></pre></td></tr></table></figure></div>
+
+<p>访问&#x2F;admin，点击忘记密码，问题“我的所在地是哪个城市？”，联想之前的qq邮箱，通过qq查找位置，（现在好像查不到了，不过根据网上的wp是在西安），输入西安，重置密码，登陆获取flag</p>
+<h5 id="web16"><a href="#web16" class="headerlink" title="web16"></a>web16</h5><p>题目描述：<em>对于测试用的探针，使用完毕后要及时删除，可能会造成信息泄露</em></p>
+<p>根据提示，访问&#x2F;tz.php，再其中找到PHPINFO，点击，网页搜索flag，得到flag</p>
+<h5 id="web17"><a href="#web17" class="headerlink" title="web17"></a>web17</h5><p>题目描述：<em>备份的sql文件会泄露敏感信息</em></p>
+<p>dirsearch扫描，结果：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[05:15:25] 200 -  934B  - /backup.sql</span><br></pre></td></tr></table></figure></div>
+
+<p>访问下载，在sql文件中得到flag</p>
+<h5 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h5><p>题目描述：<em>不要着急，休息，休息一会儿，玩101分给你flag</em></p>
+<p>打开容器是个像素小鸟的游戏，超级难玩</p>
+<p>没啥思路，dirsearch也没扫出来，那就F12打开控制台，查看js文件的源代码，控制台格式太难看可以复制到vscode，右键格式化文档。在源代码里发现了好东西：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> result = <span class="variable language_">window</span>.<span class="title function_">confirm</span>(<span class="string">&quot;\u4f60\u8d62\u4e86\uff0c\u53bb\u5e7a\u5e7a\u96f6\u70b9\u76ae\u7231\u5403\u76ae\u770b\u770b&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>confirm函数的作用是在浏览器弹出一个确认框，看内容发现是uniccode编码，解码后得到：<code>你赢了，去幺幺零点皮爱吃皮看看</code></p>
+<p>访问&#x2F;110.php，得到flag</p>
+<h5 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h5><p>题目描述：<em>密钥什么的，就不要放在前端了</em></p>
+<p>一看就是前端泄密，直接F12打开控制台，查看源代码发现加密函数：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">encrypt</span>(<span class="params">data,key,iv</span>) &#123; <span class="comment">//key,iv：16位的字符串</span></span><br><span class="line">        <span class="keyword">var</span> key1  = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Latin1</span>.<span class="title function_">parse</span>(key);</span><br><span class="line">        <span class="keyword">var</span> iv1   = <span class="title class_">CryptoJS</span>.<span class="property">enc</span>.<span class="property">Latin1</span>.<span class="title function_">parse</span>(iv);</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">CryptoJS</span>.<span class="property">AES</span>.<span class="title function_">encrypt</span>(data, key1,&#123;</span><br><span class="line">            iv : iv1,</span><br><span class="line">            mode : <span class="title class_">CryptoJS</span>.<span class="property">mode</span>.<span class="property">CBC</span>,</span><br><span class="line">            padding : <span class="title class_">CryptoJS</span>.<span class="property">pad</span>.<span class="property">ZeroPadding</span></span><br><span class="line">        &#125;).<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure></div>
+
+<p>解释encrypt函数：关键看return部分，我们可以知道：</p>
+<ul>
+<li>加密方式：AES</li>
+<li>运算模式：CBC</li>
+<li>填充模式：Zeros</li>
+</ul>
+<p>看按钮提交时触发的函数：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">checkForm</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> key = <span class="string">&quot;0000000372619038&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> iv = <span class="string">&quot;ilove36dverymuch&quot;</span>;</span><br><span class="line">        <span class="keyword">var</span> pazzword = $(<span class="string">&quot;#pazzword&quot;</span>).<span class="title function_">val</span>();</span><br><span class="line">        pazzword = <span class="title function_">encrypt</span>(pazzword,key,iv);</span><br><span class="line">        $(<span class="string">&quot;#pazzword&quot;</span>).<span class="title function_">val</span>(pazzword);</span><br><span class="line">        $(<span class="string">&quot;#loginForm&quot;</span>).<span class="title function_">submit</span>();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>我们可以得到 ：</p>
+<ul>
+<li>密钥：0000000372619038</li>
+<li>偏移：ilove36dverymuch</li>
+</ul>
+<p>在注释部分可以发现加密后的密文：a599ac85a73384ee3219fa684296eaa62667238d608efa81837030bd1ce1bf04</p>
+<p>接下来解密得到密码，登陆即可获得flag</p>
+<p>AES在线加&#x2F;解密：<a class="link"   href="https://www.toolhelper.cn/SymmetricEncryption/AES" >AES 加密&#x2F;解密 - 锤子在线工具 (toolhelper.cn) <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h6 id="web20"><a href="#web20" class="headerlink" title="web20"></a>web20</h6><p>题目描述：<em>mdb文件是早期asp+access构架的数据库文件，文件泄露相当于数据库被脱裤了。</em></p>
+<p>题目描述一看就是数据库泄密，直接访问默认数据库文件路径：&#x2F;db&#x2F;db.mdb，直接脱裤（当然此处用dirsearch也可以扫出来）</p>
+<p>直接通过记事本打开，乱码不要慌，全局搜索flag即可得到</p>
+<hr>
+
+<p>2024.10.09</p>
+]]></content>
+      <categories>
+        <category>ctf</category>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>ctf</tag>
+        <tag>ctf-web</tag>
+      </tags>
+  </entry>
 </search>
