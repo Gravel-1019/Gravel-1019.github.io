@@ -18,15 +18,15 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="ctfshow靶场web入门，web21-28wp">
+        <meta name="description" content="ctfshow靶场web入门-爆破，web21-28wp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ctfshow刷题笔记-web入门-爆破web21-28">
 <meta property="og:url" content="http://example.com/2024/10/09/ctfshow%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-web%E5%85%A5%E9%97%A8-%E7%88%86%E7%A0%B4web21-28/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ctfshow靶场web入门，web21-28wp">
+<meta property="og:description" content="ctfshow靶场web入门-爆破，web21-28wp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-09T05:30:00.000Z">
-<meta property="article:modified_time" content="2024-10-10T13:59:25.194Z">
+<meta property="article:modified_time" content="2024-10-10T15:40:52.843Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="ctf-web">
@@ -606,8 +606,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-10 21:59:25</span>
-            <span class="mobile">2024-10-10 21:59:25</span>
+            <span class="desktop">2024-10-10 23:40:52</span>
+            <span class="mobile">2024-10-10 23:40:52</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -671,7 +671,7 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h5 id="web21"><a href="#web21" class="headerlink" title="web21"></a>web21</h5><p>题目描述：<em>爆破什么的，都是基操</em></p>
+            <h3 id="web21"><a href="#web21" class="headerlink" title="web21"></a>web21</h3><p>题目描述：<em>爆破什么的，都是基操</em></p>
 <p>下载题目提供的字典，打开环境，弹出一个登陆框</p>
 <p>打开burpsuite，抓包。账户admin，密码123，得到以下的发送数据包：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line">Host: f574dda5-1dfd-4efc-8b15-379912447b16.challenge.ctf.show</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Authorization: Basic YWRtaW46MTIz</span><br><span class="line">Sec-Ch-Ua: &quot;Microsoft Edge&quot;;v=&quot;129&quot;, &quot;Not=A?Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;129&quot;</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Sec-Ch-Ua-Platform: &quot;Windows&quot;</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Sec-Fetch-Site: same-origin</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Referer: https://f574dda5-1dfd-4efc-8b15-379912447b16.challenge.ctf.show/</span><br><span class="line">Accept-Encoding: gzip, deflate, br</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</span><br><span class="line">Priority: u=0, i</span><br><span class="line">Connection: keep-alive</span><br></pre></td></tr></table></figure></div>
@@ -683,10 +683,10 @@
 <p>后面一看还有密文，base64解密之后是admin:123</p>
 <p>搞清楚数据包之后，开始爆破。将数据包右键发送到Intruder模块，clear$，选中加密的位置，Add$，切换到payload标签页，在payload settings处导入题目给的字典，在payload processing处添加规则，Add prefix（添加前缀）：<code>admin:</code>，Encode，Base64-encode。为什么添加这两条规则，因为我们需要爆破的是密码，用户名确定的是admin，而且在数据包中是经过Base64编码的。Payload encoding处的勾选要取消，因为base64中会出现等号，勾选会导致爆破失败。配置完成，Start attack。查看不一样长度的返回包，解密后得到admin:shark63</p>
 <p>输入账号密码得到flag</p>
-<h5 id="web22"><a href="#web22" class="headerlink" title="web22"></a>web22</h5><p>题目描述：<em>域名也可以爆破的，试试爆破这个ctf.show的子域名</em></p>
+<h3 id="web22"><a href="#web22" class="headerlink" title="web22"></a>web22</h3><p>题目描述：<em>域名也可以爆破的，试试爆破这个ctf.show的子域名</em></p>
 <p>可以使用OneForAll进行爆破；<a class="link"   target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll" >https://github.com/shmilylty/OneForAll <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>目前该域名已失效，flag为<code>flag&#123;ctf_show_web&#125;</code></p>
-<h5 id="web23"><a href="#web23" class="headerlink" title="web23"></a>web23</h5><p>题目描述：<em>还爆破？这么多代码，告辞！</em></p>
+<h3 id="web23"><a href="#web23" class="headerlink" title="web23"></a>web23</h3><p>题目描述：<em>还爆破？这么多代码，告辞！</em></p>
 <p>打开题目只有一堆代码（为节省篇幅已删掉注释）：</p>
 <div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&#x27;flag.php&#x27;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;token&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$token</span> = <span class="title function_ invoke__">md5</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;token&#x27;</span>]);</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">1</span>,<span class="number">1</span>)===<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">14</span>,<span class="number">1</span>) &amp;&amp; <span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>,<span class="number">14</span>,<span class="number">1</span>)===<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">17</span>,<span class="number">1</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>((<span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">1</span>,<span class="number">1</span>))+<span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">14</span>,<span class="number">1</span>))+<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">17</span>,<span class="number">1</span>))/<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">1</span>,<span class="number">1</span>)===<span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">substr</span>(<span class="variable">$token</span>, <span class="number">31</span>,<span class="number">1</span>)))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></div>
 
@@ -703,7 +703,7 @@
 <p>运行脚本，得到tooken：422</p>
 <p><strong>知识点1</strong>：php函数substr()用于字符串切片，三个参数分别是切片的字符串，从哪里开始切（下标），切几个字符</p>
 <p><strong>知识点2</strong>：php函数intval()将字符串转换为int整数类型</p>
-<h5 id="web24"><a href="#web24" class="headerlink" title="web24"></a>web24</h5><p>题目描述：<em>爆个🔨</em></p>
+<h3 id="web24"><a href="#web24" class="headerlink" title="web24"></a>web24</h3><p>题目描述：<em>爆个🔨</em></p>
 <p>打开题目依旧爆出一堆代码和一串字符：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line">if(isset($_GET[&#x27;r&#x27;]))&#123;</span><br><span class="line">    $r = $_GET[&#x27;r&#x27;];</span><br><span class="line">    mt_srand(372619038);</span><br><span class="line">    if(intval($r)===intval(mt_rand()))&#123;</span><br><span class="line">        echo $flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">    echo system(&#x27;cat /proc/version&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt; Linux version 5.4.0-163-generic (buildd@lcy02-amd64-067) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2)) #180-Ubuntu SMP Tue Sep 5 13:21:23 UTC 2023 Linux version 5.4.0-163-generic (buildd@lcy02-amd64-067) (gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.2)) #180-Ubuntu SMP Tue Sep 5 13:21:23 UTC 2023</span><br></pre></td></tr></table></figure></div>
 
@@ -715,7 +715,7 @@
 <p>传入参数&#x2F;?r&#x3D;1155388967，得到flag</p>
 <p><strong>知识点1</strong>：<code>mt_srand()</code>是 PHP 中的随机数生成器初始化函数，用于设置随机数生成器的种子值。</p>
 <p><strong>知识点2</strong>：<code>mt_rand()</code>生成一个随机整数。</p>
-<h5 id="web25"><a href="#web25" class="headerlink" title="web25"></a>web25</h5><p>题目描述：<em>爆个🔨，不爆了</em></p>
+<h3 id="web25"><a href="#web25" class="headerlink" title="web25"></a>web25</h3><p>题目描述：<em>爆个🔨，不爆了</em></p>
 <p>打开题目一堆代码：</p>
 <div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;r&#x27;</span>]))&#123;</span><br><span class="line">    <span class="variable">$r</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;r&#x27;</span>];</span><br><span class="line">    <span class="title function_ invoke__">mt_srand</span>(<span class="title function_ invoke__">hexdec</span>(<span class="title function_ invoke__">substr</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$flag</span>), <span class="number">0</span>,<span class="number">8</span>)));</span><br><span class="line">    <span class="variable">$rand</span> = <span class="title function_ invoke__">intval</span>(<span class="variable">$r</span>)-<span class="title function_ invoke__">intval</span>(<span class="title function_ invoke__">mt_rand</span>());</span><br><span class="line">    <span class="keyword">if</span>((!<span class="variable">$rand</span>))&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$_COOKIE</span>[<span class="string">&#x27;token&#x27;</span>]==(<span class="title function_ invoke__">mt_rand</span>()+<span class="title function_ invoke__">mt_rand</span>()))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$flag</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$rand</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">system</span>(<span class="string">&#x27;cat /proc/version&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
@@ -740,10 +740,10 @@
 <p>传入参数&#x2F;?r&#x3D;319805724，打开控制台，应用程序，设置cookie名token，值556463077，刷新页面获得flag</p>
 <p><strong>知识点1</strong>：只要生成随机数的种子一样，也就是mt_srand的参数一样，每次生成的随机数无论在什么时间或环境中运行顺序和值都是一样的</p>
 <p><strong>注意</strong>：这道题有个很ex的地方，用php_mt_seed工具可能爆出很多个种子，一个不行就换几个试，因为你不知道题目里的种子是哪个。我就是在这里坐牢了很久。。。</p>
-<h5 id="web26"><a href="#web26" class="headerlink" title="web26"></a>web26</h5><p>题目描述：<em>这个可以爆</em></p>
+<h3 id="web26"><a href="#web26" class="headerlink" title="web26"></a>web26</h3><p>题目描述：<em>这个可以爆</em></p>
 <p>打开题目，点击确认，之后是一个数据库配置页面。不知道如何下手，点击安装，发现提示连接成功了。</p>
 <p>抓个包，点击安装，发现返回数据包里有flag</p>
-<h5 id="web27"><a href="#web27" class="headerlink" title="web27"></a>web27</h5><p>题目描述：<em>CTFshow菜鸡学院招生啦！</em></p>
+<h3 id="web27"><a href="#web27" class="headerlink" title="web27"></a>web27</h3><p>题目描述：<em>CTFshow菜鸡学院招生啦！</em></p>
 <p>打开是一个教务管理系统的登陆页面，有个录取名单下载打开（用Excel），得到以下内容：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1	高先伊	WEB	621022********5237	</span><br><span class="line">2	嵇开梦	MISC	360730********7653	党员</span><br><span class="line">3	郎康焕	RE	522601********8092	</span><br><span class="line">4	元羿谆	PWN	451023********3419	生源地贷款</span><br><span class="line">5	祁落兴	CRYPTO	410927********5570	</span><br></pre></td></tr></table></figure></div>
 
@@ -752,7 +752,7 @@
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=%E5%B5%87%E5%BC%80%E6%A2%A6&amp;p=360730200001017653</span><br></pre></td></tr></table></figure></div>
 
 <p>发现身份证并没有加密，右键，发送到Intruder，身份证位置添加$，到payload标签页，payload sets设置为Datas，日期选择1990.1.1到2024.10.10，Format格式为：yyyyMMdd，Payload Processing处设置规则：Add prefix：360730，Add suffix：7653，Start attack，找到Length不一样的一个，得到完整身份证号码为：360730199110167653。在学籍管理系统输入姓名和身份证号，得到学号为10167653，初始密码为身份证号，返回登陆界面，登陆获得flag</p>
-<h4 id="web28"><a href="#web28" class="headerlink" title="web28"></a>web28</h4><p>题目描述：<em>大海捞针</em></p>
+<h3 id="web28"><a href="#web28" class="headerlink" title="web28"></a>web28</h3><p>题目描述：<em>大海捞针</em></p>
 <p>题目打开只有一句：web28:where is flag?</p>
 <p>但是目录有意思：&#x2F;0&#x2F;1&#x2F;2.txt</p>
 <p>估计就是爆破目录了</p>
@@ -776,7 +776,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-10-10 21:59:25
+                    :</strong> 2024-10-10 23:40:52
             </li>
         
         <li>
@@ -861,7 +861,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">ctfshow刷题笔记-web入门-爆破web21-28</div>
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web21"><span class="nav-text">web21</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web22"><span class="nav-text">web22</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web23"><span class="nav-text">web23</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web24"><span class="nav-text">web24</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web25"><span class="nav-text">web25</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web26"><span class="nav-text">web26</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web27"><span class="nav-text">web27</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web28"><span class="nav-text">web28</span></a></li></ol>
 
     </div>
 </div>
